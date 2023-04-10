@@ -5,50 +5,8 @@ import { UserForm } from './users/user.form';
 
 @Component({
   selector: 'workspace-root',
-  template: `
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of facade.users$ | async">
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>
-            <button type="button" (click)="form.patchValue(user)">
-              Alterar
-            </button>
-            <button type="button" (click)="facade.removeUser(user)">
-              Remover
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button (click)="facade.loadUsers()">Load users</button>
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <label>
-        <span>ID</span>
-        <input type="number" name="id" formControlName="id" readonly />
-      </label>
-      <label>
-        <span>Nome</span>
-        <input type="text" name="name" formControlName="name" />
-      </label>
-
-      <output> {{ facade.error$ | async }} </output>
-
-      <button>Enviar</button>
-    </form>
-
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'frontend';

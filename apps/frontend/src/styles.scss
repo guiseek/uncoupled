@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-surface-body: #000000;
+  --bg-surface-container: #131313;
+  --color-text-container: #9d9d9d;
+  --color-link: #9d9d9d;
+  --color-link-hover: #f9f9f9;
+  --border-radius-container: 10px;
+  --font-family: 'Source Sans Pro', sans-serif;
+  --font-body-size: 1.1rem;
+  --letter-spacing: 1px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-body-size);
+  background-color: var(--bg-surface-body);
+  letter-spacing: var(--letter-spacing);
+}
