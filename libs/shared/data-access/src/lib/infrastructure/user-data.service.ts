@@ -5,7 +5,7 @@ export class UserDataService {
   constructor(private http: Http<User>) {}
 
   getUsers() {
-    return this.http.get('users');
+    return this.http.get<User[]>('users');
   }
 
   createUser(value: User) {
@@ -13,10 +13,10 @@ export class UserDataService {
   }
 
   updateUser(value: User) {
-    return this.http.put<User>('users', value);
+    return this.http.put<User>(`users/${value.id}`, value);
   }
 
   deleteUser(value: User) {
-    return this.http.delete<User>('users');
+    return this.http.delete<User>(`users/${value.id}`);
   }
 }
