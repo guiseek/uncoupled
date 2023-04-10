@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@workspace/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@workspace/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
       "@workspace/shared/util-core": ["libs/shared/util-core/src/index.ts"]
     }
   },

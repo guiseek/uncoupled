@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  fill: white;
+  padding: 8px 10px;
+  color: var(--color-link);
+
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
+}
+:host svg {
+  max-height: 20px;
+}

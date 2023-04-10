@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-surface-container);
+  color: var(--color-text-container);
+  letter-spacing: var(--letter-spacing-container);
+  border-radius: var(--border-radius-container);
+}
