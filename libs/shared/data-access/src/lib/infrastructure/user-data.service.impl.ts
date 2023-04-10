@@ -1,7 +1,8 @@
+import { UserDataService } from '../ports/user-data.service';
 import { Http } from '@workspace/shared/util-core';
 import { User } from '../entities/user';
 
-export class UserDataService {
+export class UserDataServiceImpl implements UserDataService {
   constructor(private http: Http<User>) {}
 
   getUsers() {

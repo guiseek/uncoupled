@@ -1,8 +1,9 @@
-import { UserDataService } from '../infrastructure/user-data.service';
 import { BehaviorSubject, Observable, catchError, take } from 'rxjs';
+import { UserDataService } from '../ports/user-data.service';
+import { UserFacade } from '../ports/user.facade';
 import { User } from '../entities/user';
 
-export class UserFacade {
+export class UserFacadeImpl implements UserFacade {
   #error = new BehaviorSubject<string[]>([]);
   error$ = this.#error.asObservable();
 
@@ -20,7 +21,7 @@ export class UserFacade {
       });
   }
 
-  saveUser<T extends User>(value: T) {
+  saveUser(value: User) {
     if (value.id) {
       this.service
         .updateUser(value)
@@ -38,7 +39,7 @@ export class UserFacade {
     }
   }
 
-  removeUser<T extends User>(value: T) {
+  removeUser(value: User) {
     this.service
       .deleteUser(value)
       .pipe(take(1), this.catchError())
