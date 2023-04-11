@@ -1,4 +1,4 @@
-import { Playlist, PlaylistKind } from '@workspace/library/data-access';
+import { Playlist, PlaylistKind } from '@uncoupled/library/data-access';
 
 export class PlaylistEntity implements Playlist {
   id: number;

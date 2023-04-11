@@ -1,7 +1,7 @@
-import { UserFacade } from '@workspace/user/data-access';
-import { LibraryFacade } from '@workspace/library/data-access';
+import { UserFacade } from '@uncoupled/user/data-access';
+import { LibraryFacade } from '@uncoupled/library/data-access';
 import { Component, OnInit } from '@angular/core';
-import { Di } from '@workspace/shared/util-core';
+import { Di } from '@uncoupled/shared/util-core';
 import { UserForm } from './users/user.form';
 
 @Component({

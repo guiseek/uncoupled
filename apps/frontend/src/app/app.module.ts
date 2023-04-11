@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UiLayoutModule } from '@workspace/shared/ui-layout';
+import { UiLayoutModule } from '@uncoupled/shared/ui-layout';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 

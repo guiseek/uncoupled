@@ -1,18 +1,18 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { UiLayoutModule } from '@workspace/shared/ui-layout';
-import { MockDataService } from '@workspace/shared/util-test';
-import { Di } from '@workspace/shared/util-core';
+import { UiLayoutModule } from '@uncoupled/shared/ui-layout';
+import { MockDataService } from '@uncoupled/shared/util-test';
+import { Di } from '@uncoupled/shared/util-core';
 import { TestBed } from '@angular/core/testing';
 import {
   User,
   UserFacade,
   UserFacadeImpl,
-} from '@workspace/user/data-access';
+} from '@uncoupled/user/data-access';
 import {
   Playlist,
   LibraryFacade,
   LibraryFacadeImpl,
-} from '@workspace/library/data-access';
+} from '@uncoupled/library/data-access';
 import { AppComponent } from './app.component';
 
 class UserDataService extends MockDataService<User> {

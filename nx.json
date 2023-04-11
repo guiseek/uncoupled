@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "workspace",
+  "npmScope": "uncoupled",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",

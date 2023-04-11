@@ -3,7 +3,7 @@ import {
   DataService,
   UpdateType,
   DeleteType,
-} from '@workspace/shared/data-access';
+} from '@uncoupled/shared/data-access';
 import { of } from 'rxjs';
 
 interface Entity {

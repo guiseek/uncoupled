@@ -1,17 +1,17 @@
-import { Http, RxJSHttp } from '@workspace/shared/data-access';
-import { Di, Token } from '@workspace/shared/util-core';
+import { Http, RxJSHttp } from '@uncoupled/shared/data-access';
+import { Di, Token } from '@uncoupled/shared/util-core';
 import {
   UserFacade,
   UserFacadeImpl,
   UserDataService,
   UserDataServiceImpl,
-} from '@workspace/user/data-access';
+} from '@uncoupled/user/data-access';
 import {
   LibraryFacade,
   LibraryFacadeImpl,
   LibraryDataService,
   LibraryDataServiceImpl,
-} from '@workspace/library/data-access';
+} from '@uncoupled/library/data-access';
 
 const API_URL = new Token('api.url');
 

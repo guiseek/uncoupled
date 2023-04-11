@@ -1,5 +1,5 @@
 {
-  "name": "@workspace/shared/data-access",
+  "name": "@uncoupled/shared/data-access",
   "version": "0.0.1",
   "type": "commonjs"
 }
