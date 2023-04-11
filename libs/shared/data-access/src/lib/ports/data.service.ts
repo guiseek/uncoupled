@@ -4,9 +4,9 @@ export interface Entity {
   id: unknown;
 }
 
-export type CreateType<T extends Entity> = Exclude<T, 'id'> & T;
-export type UpdateType<T extends Entity> = Partial<T> & Required<T>;
-export type DeleteType<T extends Entity> = Required<T>;
+export type CreateType<T> = Exclude<T, 'id'> & T;
+export type UpdateType<T> = Entity & Partial<T>;
+export type DeleteType<T> = Entity & Partial<T>;
 
 export abstract class DataService<T extends Entity> {
   abstract findAll(): Observable<T[]>;

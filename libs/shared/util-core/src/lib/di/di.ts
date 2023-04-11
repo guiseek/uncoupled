@@ -35,4 +35,14 @@ export class Di {
 
     return concrete;
   };
+
+  static providers(framework: 'angular' | 'nest') {
+    return Array.from(this.#container.entries()).map(([provide, useClass]) => {
+      const dependencies =
+        framework === 'angular'
+          ? { deps: this.#relations.get(provide) }
+          : { inject: this.#relations.get(provide) };
+      return { provide, useClass, ...dependencies };
+    });
+  }
 }

@@ -1,9 +1,11 @@
-import { PlaylistEntity } from './entities/playlist.entity';
-import { MockService } from '../shared/mock.service';
-import { Injectable } from '@nestjs/common';
+import { DataService } from '@uncoupled/shared/data-access';
+import { PlaylistEntity } from '../entities/playlist.entity';
+import { MockService } from '../../shared/mock.service';
 
-@Injectable()
-export class LibrariesService extends MockService<PlaylistEntity> {
+export class PlaylistsMongoService
+  extends MockService<PlaylistEntity>
+  implements DataService<PlaylistEntity>
+{
   constructor() {
     super([
       {
@@ -14,7 +16,7 @@ export class LibrariesService extends MockService<PlaylistEntity> {
         owner: 'Gui Seek',
         created: new Date(),
         lastPlay: new Date(),
-        playing: false
+        playing: false,
       },
       {
         id: 2,
@@ -24,7 +26,7 @@ export class LibrariesService extends MockService<PlaylistEntity> {
         owner: 'Gui Seek',
         created: new Date(),
         lastPlay: new Date(),
-        playing: true
+        playing: true,
       },
       {
         id: 3,
@@ -34,7 +36,7 @@ export class LibrariesService extends MockService<PlaylistEntity> {
         owner: 'Gui Seek',
         created: new Date(),
         lastPlay: new Date(),
-        playing: false
+        playing: false,
       },
     ]);
   }

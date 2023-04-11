@@ -1,9 +1,12 @@
-import { Module } from '@nestjs/common';
-import { LibrariesService } from './libraries.service';
+import { Module, Provider } from '@nestjs/common';
+import { Di } from '@uncoupled/shared/util-core';
 import { LibrariesController } from './libraries.controller';
+import { PlaylistsService } from './services/playlists.service';
+import { PlaylistsMockService } from './services/playlists-mock.service';
+
+Di.add(PlaylistsService, PlaylistsMockService);
 
 @Module({
   controllers: [LibrariesController],
-  providers: [LibrariesService],
 })
 export class LibrariesModule {}

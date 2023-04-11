@@ -7,36 +7,37 @@ import {
   Delete,
   Controller,
 } from '@nestjs/common';
-import { LibrariesService } from './libraries.service';
 import { CreatePlaylistDto } from './dto/create-playlist.dto';
 import { UpdatePlaylistDto } from './dto/update-playlist.dto';
+import { PlaylistsService } from './services/playlists.service';
+import { Di } from '@uncoupled/shared/util-core';
 
 @Controller('libraries')
 export class LibrariesController {
-  constructor(private readonly librariesService: LibrariesService) {}
+  #librariesService = Di.use(PlaylistsService)
 
   @Post()
   create(@Body() createLibraryDto: CreatePlaylistDto) {
-    return this.librariesService.create(createLibraryDto);
+    return this.#librariesService.create(createLibraryDto);
   }
 
   @Get()
   findAll() {
-    return this.librariesService.findAll();
+    return this.#librariesService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.librariesService.findOne(+id);
+    return this.#librariesService.findOne({ id: +id });
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateLibraryDto: UpdatePlaylistDto) {
-    return this.librariesService.update(+id, updateLibraryDto);
+    return this.#librariesService.update({ ...updateLibraryDto, id: +id });
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.librariesService.remove(+id);
+    return this.#librariesService.remove({ id: +id });
   }
 }

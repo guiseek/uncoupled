@@ -1,6 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LibrariesController } from './libraries.controller';
-import { LibrariesService } from './libraries.service';
+import { Di } from '@uncoupled/shared/util-core';
+import { PlaylistsService } from './services/playlists.service';
+import { PlaylistsMockService } from './services/playlists-mock.service';
+
+Di.add(PlaylistsService, PlaylistsMockService);
 
 describe('LibrariesController', () => {
   let controller: LibrariesController;
@@ -8,7 +12,6 @@ describe('LibrariesController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [LibrariesController],
-      providers: [LibrariesService],
     }).compile();
 
     controller = module.get<LibrariesController>(LibrariesController);
