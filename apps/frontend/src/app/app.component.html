@@ -1,75 +1,86 @@
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of facade.users$ | async">
-      <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td>
-        <button type="button" (click)="form.patchValue(user)">Alterar</button>
-        <button type="button" (click)="facade.removeUser(user)">Remover</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userFacade.users$ | async">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>
+          <button type="button" (click)="form.patchValue(user)">Alterar</button>
+          <button type="button" (click)="userFacade.removeUser(user)">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <router-outlet></router-outlet>
+</main>
 
 <aside class="sidenav">
-  <section workspace-container>
-    <nav workspace-list>
-      <a routerLink="/" workspace-nav-list-item>
+  <section ui-container>
+    <nav ui-list>
+      <a routerLink="/" ui-nav-list-item>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
+          height="28"
+          viewBox="0 96 960 960"
+          width="28"
         >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z" />
+          <path
+            d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"
+          />
         </svg>
         Início
       </a>
-      <a routerLink="/" workspace-nav-list-item>
+      <a routerLink="/" ui-nav-list-item>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
+          height="28"
+          viewBox="0 96 960 960"
+          width="28"
         >
-          <path d="M0 0h24v24H0V0z" fill="none" />
           <path
-            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"
           />
         </svg>
         Buscar
       </a>
     </nav>
 
-    <ul workspace-chip-list>
-      <li workspace-chip-list-item>Playlists</li>
-    </ul>
   </section>
 
-  <section workspace-container>
+  <section ui-container>
+    <ul ui-chip-list>
+      <li ui-chip-list-item>Playlists</li>
+      <li ui-chip-list-item>Podcasts e programas</li>
+      <li ui-chip-list-item>Álbuns</li>
+      <li ui-chip-list-item>Artistas</li>
+    </ul>
     <ui-library-list>
-      <ui-library-list-item>
-        <img slot="cover" src="/assets/library-cover-jazz.jpg" alt="" />
-        <h2 slot="title">Jazz / Soul / Blues / Funk</h2>
-        <p slot="description">Playlist - Gui Seek</p>
+      <ui-library-list-item
+        *ngFor="let item of libraryFacade.playlists$ | async"
+        [ngClass]="{ active: item.playing }"
+      >
+        <img slot="cover" [attr.src]="item.cover" [attr.alt]="item.title" />
+        <h2 slot="title">{{ item.title }}</h2>
+        <p slot="description">{{ item.kind }} - {{ item.owner }}</p>
 
-        <time slot="created">12 de set. de 2016</time>
-        <span slot="last-play"> há 1 semana </span>
+        <time slot="created">{{ item.created | date : 'mediumDate' }}</time>
+        <span slot="last-play">{{ item.lastPlay | date : 'shortTime' }}</span>
       </ui-library-list-item>
     </ui-library-list>
   </section>
 </aside>
 
-<button (click)="facade.loadUsers()">Load users</button>
-
+<!--
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ui-text-field>
     <label slot="label"> ID </label>
@@ -80,9 +91,8 @@
     <input slot="input" type="text" name="name" formControlName="name" />
   </ui-text-field>
 
-  <output> {{ facade.error$ | async }} </output>
+  <output> {{ userFacade.error$ | async }} </output>
 
   <button>Enviar</button>
-</form>
+</form> -->
 
-<router-outlet></router-outlet>

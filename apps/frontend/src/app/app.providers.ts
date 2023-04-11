@@ -5,6 +5,12 @@ import {
   UserDataService,
   UserDataServiceImpl,
 } from '@workspace/shared/data-access';
+import {
+  LibraryFacade,
+  LibraryFacadeImpl,
+  LibraryDataService,
+  LibraryDataServiceImpl,
+} from '@workspace/library/data-access';
 
 const API_URL = new Token('api.url');
 
@@ -14,8 +20,13 @@ Di.add(Http, RxJSHttp, [API_URL]);
 Di.add(UserDataService, UserDataServiceImpl, [Http]);
 Di.add(UserFacade, UserFacadeImpl, [UserDataService]);
 
+Di.add(LibraryDataService, LibraryDataServiceImpl, [Http]);
+Di.add(LibraryFacade, LibraryFacadeImpl, [LibraryDataService]);
+
 setTimeout(() => {
   console.log(Di.use(Http));
   console.log(Di.use(UserDataService));
   console.log(Di.use(UserFacade));
+  console.log(Di.use(LibraryDataService));
+  console.log(Di.use(LibraryFacade));
 }, 1000);

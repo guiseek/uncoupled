@@ -1,75 +1,93 @@
 :host {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 8px;
-  gap: 8px;
+  flex-direction: column;
 
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 3px;
-
-    flex: none;
-    // order: 1;
-    flex-grow: 1;
-  }
-
-  slot {
+  div {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
-    padding: 0px 8px;
-    font-size: 16px;
-    color: #a7a7a7;
-    flex: 1;
-  }
+    padding: 8px;
+    gap: 8px;
+    border-radius: 8px;
 
-  ::slotted(h2),
-  ::slotted(p) {
-    font-family: 'Segoe UI';
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    margin: 0;
-    padding: 0;
+    background-color: #121212;
+    &:hover {
+      background-color: #1a1a1a;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 3px;
+
+      flex: 1;
+      // order: 1;
+      flex-grow: 1;
+    }
+
+    slot {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0px 8px;
+      font-size: 16px;
+      color: #d5d5d5;
+      font-weight: 300;
+      // flex: 1;
+    }
+
+    ::slotted(h2),
+    ::slotted(p) {
+      font-family: 'Segoe UI';
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin: 0;
+      padding: 0;
+    }
+    ::slotted(h2) {
+      font-size: 16px;
+      line-height: 21px;
+
+      color: #ffffff;
+    }
+
+    ::slotted(p) {
+      font-size: 14px;
+      line-height: 19px;
+      color: #a7a7a7;
+    }
+
+    figure {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+      gap: 10px;
+      margin: 0;
+
+      overflow: hidden;
+
+      width: 48px;
+      height: 48px;
+
+      background: rgba(16, 16, 16, 0.25);
+      border-radius: 6px;
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
   }
+}
+
+:host-context(.active) {
   ::slotted(h2) {
-    font-size: 16px;
-    line-height: 21px;
-
-    color: #ffffff;
-  }
-
-  ::slotted(p) {
-    font-size: 14px;
-    line-height: 19px;
-    color: #a7a7a7;
-  }
-
-  figure {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 10px;
-    margin: 0;
-
-    overflow: hidden;
-
-    width: 48px;
-    height: 48px;
-
-    background: rgba(16, 16, 16, 0.25);
-    border-radius: 4px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    color: #65d46e;
   }
 }

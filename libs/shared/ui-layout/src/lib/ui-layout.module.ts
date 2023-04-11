@@ -5,9 +5,9 @@ import { NavListItemComponent } from './nav-list-item';
 import { NavListComponent } from './nav-list';
 import { ChipListComponent } from './chip-list';
 import { ChipListItemComponent } from './chip-list-item';
-import { TextFieldComponent } from './text-field/text-field.component';
-import { LibraryListComponent } from './library-list/library-list.component';
-import { LibraryListItemComponent } from './library-list-item/library-list-item.component';
+import { TextFieldComponent } from './text-field';
+import { LibraryListComponent } from './library-list';
+import { LibraryListItemComponent } from './library-list-item';
 
 @NgModule({
   imports: [CommonModule],

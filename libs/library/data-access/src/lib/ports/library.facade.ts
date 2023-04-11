@@ -3,9 +3,9 @@ import { Playlist } from '../entities/playlist';
 
 export abstract class LibraryFacade {
   abstract error$: Observable<string[]>;
-  abstract users$: Observable<Playlist[]>;
+  abstract playlists$: Observable<Playlist[]>;
 
-  abstract loadUsers(): void;
-  abstract saveUser(user: Playlist): void;
-  abstract removeUser(user: Playlist): void;
+  abstract loadPlaylists(): void;
+  abstract savePlaylist(user: Playlist): void;
+  abstract removePlaylist(user: Playlist): void;
 }

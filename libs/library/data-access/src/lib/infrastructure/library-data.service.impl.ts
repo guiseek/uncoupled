@@ -6,18 +6,18 @@ export class LibraryDataServiceImpl implements LibraryDataService {
   constructor(private http: Http<Playlist>) {}
 
   getPlaylists() {
-    return this.http.get<Playlist[]>('users');
+    return this.http.get<Playlist[]>('libraries');
   }
 
   createPlaylist(value: Playlist) {
-    return this.http.post<Playlist>('users', value);
+    return this.http.post<Playlist>('libraries', value);
   }
 
   updatePlaylist(value: Playlist) {
-    return this.http.put<Playlist>(`users/${value.id}`, value);
+    return this.http.put<Playlist>(`libraries/${value.id}`, value);
   }
 
   deletePlaylist(value: Playlist) {
-    return this.http.delete<Playlist>(`users/${value.id}`);
+    return this.http.delete<Playlist>(`libraries/${value.id}`);
   }
 }
