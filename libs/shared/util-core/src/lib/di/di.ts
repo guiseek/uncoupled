@@ -47,10 +47,4 @@ export class Di {
 
     return concrete;
   };
-
-  static providers() {
-    return Array.from(this.#container.entries()).map(([provide, useClass]) => {
-      return { provide, useClass, deps: this.#relations.get(provide) };
-    });
-  }
 }
