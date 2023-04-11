@@ -2,20 +2,8 @@ import { AbstractType, Type, TypeOf } from './type';
 import { Token } from './token';
 
 export class Di {
-  static #instance: Di;
-
   static #relations = new Map();
   static #container = new Map();
-
-  private constructor() {}
-
-  static getInstance() {
-    if (!Di.#instance) {
-      Di.#instance = new Di();
-    }
-
-    return Di.#instance;
-  }
 
   static add = <T = unknown>(
     type: AbstractType<T> | Token<T>,
