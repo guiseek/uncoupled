@@ -5,19 +5,19 @@ import { User } from '../entities/user';
 export class UserDataServiceImpl implements UserDataService {
   constructor(private http: Http<User>) {}
 
-  getUsers() {
+  findAll() {
     return this.http.get<User[]>('users');
   }
 
-  createUser(value: User) {
+  create(value: User) {
     return this.http.post<User>('users', value);
   }
 
-  updateUser(value: User) {
+  update(value: User) {
     return this.http.put<User>(`users/${value.id}`, value);
   }
 
-  deleteUser(value: User) {
+  remove(value: User) {
     return this.http.delete<User>(`users/${value.id}`);
   }
 }

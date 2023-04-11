@@ -14,7 +14,7 @@ export class UserFacadeImpl implements UserFacade {
 
   loadUsers() {
     this.service
-      .getUsers()
+      .findAll()
       .pipe(take(1), this.catchError())
       .subscribe((users) => {
         this.#users.next(users);
@@ -24,14 +24,14 @@ export class UserFacadeImpl implements UserFacade {
   saveUser(value: User) {
     if (value.id) {
       this.service
-        .updateUser(value)
+        .update(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
           this.loadUsers();
         });
     } else {
       this.service
-        .createUser(value)
+        .create(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
           this.loadUsers();
@@ -41,7 +41,7 @@ export class UserFacadeImpl implements UserFacade {
 
   removeUser(value: User) {
     this.service
-      .deleteUser(value)
+      .remove(value)
       .pipe(take(1), this.catchError())
       .subscribe(() => {
         this.loadUsers();

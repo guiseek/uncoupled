@@ -5,19 +5,19 @@ import { Playlist } from '../entities/playlist';
 export class LibraryDataServiceImpl implements LibraryDataService {
   constructor(private http: Http<Playlist>) {}
 
-  getPlaylists() {
+  findAll() {
     return this.http.get<Playlist[]>('libraries');
   }
 
-  createPlaylist(value: Playlist) {
+  create(value: Playlist) {
     return this.http.post<Playlist>('libraries', value);
   }
 
-  updatePlaylist(value: Playlist) {
+  update(value: Playlist) {
     return this.http.put<Playlist>(`libraries/${value.id}`, value);
   }
 
-  deletePlaylist(value: Playlist) {
+  remove(value: Playlist) {
     return this.http.delete<Playlist>(`libraries/${value.id}`);
   }
 }

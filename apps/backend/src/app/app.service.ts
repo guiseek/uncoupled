@@ -1,18 +1,8 @@
-import { Injectable } from "@nestjs/common";
-import { User } from "@workspace/shared/data-access";
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-
-  #users: User[] = [
-    { id: 0, name: 'Gui' }
-  ]
-
   getData(): { message: string } {
-    return { message: "Hello API" };
-  }
-
-  getUsers() {
-    return this.#users
+    return { message: 'Hello API' };
   }
 }

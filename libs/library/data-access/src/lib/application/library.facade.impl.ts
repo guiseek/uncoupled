@@ -14,7 +14,7 @@ export class LibraryFacadeImpl implements LibraryFacade {
 
   loadPlaylists() {
     this.service
-      .getPlaylists()
+      .findAll()
       .pipe(take(1), this.catchError())
       .subscribe((users) => {
         this.#users.next(users);
@@ -24,14 +24,14 @@ export class LibraryFacadeImpl implements LibraryFacade {
   savePlaylist(value: Playlist) {
     if (value.id) {
       this.service
-        .updatePlaylist(value)
+        .update(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
           this.loadPlaylists();
         });
     } else {
       this.service
-        .createPlaylist(value)
+        .create(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
           this.loadPlaylists();
@@ -41,7 +41,7 @@ export class LibraryFacadeImpl implements LibraryFacade {
 
   removePlaylist(value: Playlist) {
     this.service
-      .deletePlaylist(value)
+      .remove(value)
       .pipe(take(1), this.catchError())
       .subscribe(() => {
         this.loadPlaylists();
