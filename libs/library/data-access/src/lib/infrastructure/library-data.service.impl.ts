@@ -1,5 +1,5 @@
 import { LibraryDataService } from '../ports/library-data.service';
-import { Http } from '@workspace/shared/util-core';
+import { Http } from '@workspace/shared/data-access';
 import { Playlist } from '../entities/playlist';
 
 export class LibraryDataServiceImpl implements LibraryDataService {

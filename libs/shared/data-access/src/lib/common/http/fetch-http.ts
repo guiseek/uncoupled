@@ -1,4 +1,4 @@
-import { Http } from './http';
+import { Http } from '../../ports/http';
 import { from } from 'rxjs';
 
 export class FetchHttp<T> extends Http<T> {

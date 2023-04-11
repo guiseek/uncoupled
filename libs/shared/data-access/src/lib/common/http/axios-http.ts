@@ -1,5 +1,5 @@
 import { from } from 'rxjs';
-import { Http } from './http';
+import { Http } from '../../ports/http';
 import axios from 'axios';
 
 export class AxiosHttp<T> extends Http<T> {

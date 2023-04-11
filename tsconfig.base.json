@@ -21,7 +21,8 @@
       "@workspace/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@workspace/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
       "@workspace/shared/util-core": ["libs/shared/util-core/src/index.ts"],
-      "@workspace/shared/util-test": ["libs/shared/util-test/src/index.ts"]
+      "@workspace/shared/util-test": ["libs/shared/util-test/src/index.ts"],
+      "@workspace/user/data-access": ["libs/user/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,4 +1,4 @@
-import { User } from '@workspace/shared/data-access';
+import { User } from '@workspace/user/data-access';
 
 export class UserEntity implements User {
   id: number;

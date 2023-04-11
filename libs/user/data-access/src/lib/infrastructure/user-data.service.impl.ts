@@ -1,5 +1,5 @@
 import { UserDataService } from '../ports/user-data.service';
-import { Http } from '@workspace/shared/util-core';
+import { Http } from '@workspace/shared/data-access';
 import { User } from '../entities/user';
 
 export class UserDataServiceImpl implements UserDataService {

@@ -1,8 +1,8 @@
-import { UserFacade } from '@workspace/shared/data-access';
+import { UserFacade } from '@workspace/user/data-access';
+import { LibraryFacade } from '@workspace/library/data-access';
 import { Component, OnInit } from '@angular/core';
 import { Di } from '@workspace/shared/util-core';
 import { UserForm } from './users/user.form';
-import { LibraryFacade } from '@workspace/library/data-access';
 
 @Component({
   selector: 'workspace-root',
@@ -23,5 +23,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.libraryFacade.loadPlaylists();
+    this.userFacade.loadUsers()
   }
 }

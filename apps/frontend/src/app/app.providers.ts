@@ -1,10 +1,11 @@
-import { Di, Http, Token, RxJSHttp } from '@workspace/shared/util-core';
+import { Http, RxJSHttp } from '@workspace/shared/data-access';
+import { Di, Token } from '@workspace/shared/util-core';
 import {
   UserFacade,
   UserFacadeImpl,
   UserDataService,
   UserDataServiceImpl,
-} from '@workspace/shared/data-access';
+} from '@workspace/user/data-access';
 import {
   LibraryFacade,
   LibraryFacadeImpl,

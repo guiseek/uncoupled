@@ -1,5 +1,5 @@
 import { map } from 'rxjs';
-import { Http } from './http';
+import { Http } from '../../ports/http';
 import { ajax } from 'rxjs/ajax';
 
 export class RxJSHttp<T> extends Http<T> {

@@ -7,7 +7,7 @@ import {
   User,
   UserFacade,
   UserFacadeImpl,
-} from '@workspace/shared/data-access';
+} from '@workspace/user/data-access';
 import {
   Playlist,
   LibraryFacade,
