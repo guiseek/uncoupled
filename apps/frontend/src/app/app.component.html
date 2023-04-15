@@ -54,7 +54,6 @@
         Buscar
       </a>
     </nav>
-
   </section>
 
   <section ui-container>
@@ -67,7 +66,7 @@
     <ui-library-list>
       <ui-library-list-item
         *ngFor="let item of libraryFacade.data$ | async"
-        [ngClass]="{ active: item.playing }"
+        [ngClass]="{active: item.playing}"
       >
         <img slot="cover" [attr.src]="item.cover" [attr.alt]="item.title" />
         <h2 slot="title">{{ item.title }}</h2>
@@ -95,4 +94,3 @@
 
   <button>Enviar</button>
 </form> -->
-

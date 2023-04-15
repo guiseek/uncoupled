@@ -1,9 +1,8 @@
-import { Repository } from '@uncoupled/shared/data-access';
-import { PlaylistEntity } from '../entities/playlist.entity';
-import { MockService } from '../../shared/mock.service';
+import {MockRepository, Repository} from '@uncoupled/shared/data-access'
+import {PlaylistEntity} from '../entities/playlist.entity'
 
-export class PlaylistsMongoService
-  extends MockService<PlaylistEntity>
+export class PlaylistsMockRepository
+  extends MockRepository<PlaylistEntity>
   implements Repository<PlaylistEntity>
 {
   constructor() {
@@ -38,6 +37,6 @@ export class PlaylistsMongoService
         lastPlay: new Date(),
         playing: false,
       },
-    ]);
+    ])
   }
 }

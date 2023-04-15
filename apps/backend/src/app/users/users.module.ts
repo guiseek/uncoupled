@@ -1,12 +1,14 @@
-import { Module } from '@nestjs/common';
-import { UsersController } from './users.controller';
-import { Di } from '@uncoupled/shared/util-core';
-import { UsersService } from './services/users.service';
-import { UsersMockService } from './services/users-mock.service';
-
-Di.add(UsersService, UsersMockService);
+import {Module, OnModuleInit} from '@nestjs/common'
+import {Di} from '@uncoupled/shared/util-core'
+import {UsersController} from './users.controller'
+import {UsersRepository} from './repositories/users.repository'
+import {UsersMockRepository} from './repositories/users-mock.repository'
 
 @Module({
   controllers: [UsersController],
 })
-export class UsersModule {}
+export class UsersModule implements OnModuleInit {
+  onModuleInit() {
+    Di.add(UsersRepository, UsersMockRepository)
+  }
+}
