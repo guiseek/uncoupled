@@ -17,12 +17,12 @@ export class AppComponent implements OnInit {
   readonly libraryFacade = Di.use(LibraryFacade);
 
   onSubmit() {
-    this.userFacade.saveUser(this.form.value);
+    this.userFacade.save(this.form.value);
     this.form.reset();
   }
 
   ngOnInit(): void {
-    this.libraryFacade.loadPlaylists();
-    this.userFacade.loadUsers()
+    this.libraryFacade.load();
+    this.userFacade.load();
   }
 }

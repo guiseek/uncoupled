@@ -1,8 +1,8 @@
 import {
-  CreateType,
-  DataService,
-  UpdateType,
-  DeleteType,
+  CreateDto,
+  Repository,
+  UpdateDto,
+  DeleteDto,
 } from '@uncoupled/shared/data-access';
 import { of } from 'rxjs';
 
@@ -10,7 +10,7 @@ interface Entity {
   id: number;
 }
 
-export abstract class MockService<T extends Entity> implements DataService<T> {
+export abstract class MockService<T extends Entity> implements Repository<T> {
   constructor(protected readonly collection: T[] = []) {}
 
   findAll() {
@@ -31,7 +31,7 @@ export abstract class MockService<T extends Entity> implements DataService<T> {
     return of(entity);
   }
 
-  create<D extends CreateType<T>>(value: D) {
+  create<D extends CreateDto<T>>(value: D) {
     const id = this.collection.length + 1;
     const created = new Date();
     const entity = { ...value, created, id };
@@ -39,14 +39,14 @@ export abstract class MockService<T extends Entity> implements DataService<T> {
     return of(entity);
   }
 
-  update<D extends UpdateType<T>>(value: D) {
+  update<D extends UpdateDto<T>>(value: D) {
     const index = this.#findIndex(value.id);
     const playlist = { ...this.collection[index], ...value };
     this.collection[index] = playlist;
     return of(playlist);
   }
 
-  remove<D extends DeleteType<T>>(value: D) {
+  remove<D extends DeleteDto<T>>(value: D) {
     const index = this.#findIndex(value.id);
     const entity = this.collection[index];
     this.collection.splice(index, 1);

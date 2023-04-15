@@ -6,3 +6,5 @@ export * from './lib/nav-list/nav-list.component';
 export * from './lib/chip-list/chip-list.component';
 
 export * from './lib/chip-list-item/chip-list-item.component';
+
+export * from './lib/table/table.component';

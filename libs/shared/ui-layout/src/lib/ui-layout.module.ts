@@ -8,6 +8,7 @@ import { ChipListItemComponent } from './chip-list-item';
 import { TextFieldComponent } from './text-field';
 import { LibraryListComponent } from './library-list';
 import { LibraryListItemComponent } from './library-list-item';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -20,6 +21,7 @@ import { LibraryListItemComponent } from './library-list-item';
     TextFieldComponent,
     LibraryListComponent,
     LibraryListItemComponent,
+    TableComponent,
   ],
   exports: [
     SectionContainerComponent,
@@ -30,6 +32,7 @@ import { LibraryListItemComponent } from './library-list-item';
     TextFieldComponent,
     LibraryListComponent,
     LibraryListItemComponent,
+    TableComponent,
   ],
 })
 export class UiLayoutModule {}

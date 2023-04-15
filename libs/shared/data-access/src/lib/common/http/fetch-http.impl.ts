@@ -1,15 +1,16 @@
 import { Http } from '../../ports/http';
 import { from } from 'rxjs';
 
-export class FetchHttp<T> extends Http<T> {
+export class FetchHttpImpl<T> extends Http<T> {
   constructor(override readonly baseUrl: string) {
     super(baseUrl);
   }
 
-  protected request<R>(method: string, path: string, data?: T) {
+  protected request<R, D = void>(method: string, path: string, data?: T | D) {
     const url = `${this.baseUrl}/${path}`;
     const headers = { 'Content-Type': 'application/json' };
     const body = data ? JSON.stringify(data) : undefined;
+
     const req = fetch(url, { method, headers, body }).then(async (res) => {
       if (res.status >= 400) {
         throw await res.json();

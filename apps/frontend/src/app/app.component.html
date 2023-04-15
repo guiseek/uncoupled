@@ -8,12 +8,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of userFacade.users$ | async">
+      <tr *ngFor="let user of userFacade.data$ | async">
         <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
         <td>
           <button type="button" (click)="form.patchValue(user)">Alterar</button>
-          <button type="button" (click)="userFacade.removeUser(user)">
+          <button type="button" (click)="userFacade.remove(user)">
             Remover
           </button>
         </td>
@@ -66,7 +66,7 @@
     </ul>
     <ui-library-list>
       <ui-library-list-item
-        *ngFor="let item of libraryFacade.playlists$ | async"
+        *ngFor="let item of libraryFacade.data$ | async"
         [ngClass]="{ active: item.playing }"
       >
         <img slot="cover" [attr.src]="item.cover" [attr.alt]="item.title" />

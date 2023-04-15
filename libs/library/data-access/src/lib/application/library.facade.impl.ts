@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable, catchError, take } from 'rxjs';
-import { LibraryDataService } from '../ports/library-data.service';
+import { LibraryRepository } from '../ports/library.repository';
 import { LibraryFacade } from '../ports/library.facade';
 import { Playlist } from '../entities/playlist';
 
@@ -7,44 +7,44 @@ export class LibraryFacadeImpl implements LibraryFacade {
   #error = new BehaviorSubject<string[]>([]);
   error$ = this.#error.asObservable();
 
-  #users = new BehaviorSubject<Playlist[]>([]);
-  playlists$ = this.#users.asObservable();
+  #data = new BehaviorSubject<Playlist[]>([]);
+  data$ = this.#data.asObservable();
 
-  constructor(private readonly service: LibraryDataService) {}
+  constructor(private readonly service: LibraryRepository) {}
 
-  loadPlaylists() {
+  load() {
     this.service
       .findAll()
       .pipe(take(1), this.catchError())
       .subscribe((users) => {
-        this.#users.next(users);
+        this.#data.next(users);
       });
   }
 
-  savePlaylist(value: Playlist) {
+  save(value: Playlist) {
     if (value.id) {
       this.service
         .update(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
-          this.loadPlaylists();
+          this.load();
         });
     } else {
       this.service
         .create(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
-          this.loadPlaylists();
+          this.load();
         });
     }
   }
 
-  removePlaylist(value: Playlist) {
+  remove(value: Playlist) {
     this.service
       .remove(value)
       .pipe(take(1), this.catchError())
       .subscribe(() => {
-        this.loadPlaylists();
+        this.load();
       });
   }
 

@@ -1,10 +1,10 @@
-import { DataService } from '@uncoupled/shared/data-access';
+import { Repository } from '@uncoupled/shared/data-access';
 import { PlaylistEntity } from '../entities/playlist.entity';
 import { MockService } from '../../shared/mock.service';
 
 export class PlaylistsMockService
   extends MockService<PlaylistEntity>
-  implements DataService<PlaylistEntity>
+  implements Repository<PlaylistEntity>
 {
   constructor() {
     super([

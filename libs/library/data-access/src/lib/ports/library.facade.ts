@@ -1,11 +1,4 @@
-import { Observable } from 'rxjs';
+import { Facade } from '@uncoupled/shared/data-access';
 import { Playlist } from '../entities/playlist';
 
-export abstract class LibraryFacade {
-  abstract error$: Observable<string[]>;
-  abstract playlists$: Observable<Playlist[]>;
-
-  abstract loadPlaylists(): void;
-  abstract savePlaylist(user: Playlist): void;
-  abstract removePlaylist(user: Playlist): void;
-}
+export abstract class LibraryFacade extends Facade<Playlist> {}

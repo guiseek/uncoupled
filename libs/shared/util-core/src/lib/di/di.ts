@@ -7,8 +7,8 @@ export class Di {
 
   static add = <T = unknown>(
     type: AbstractType<T> | Token<T>,
-    concrete: Type<T> | TypeOf<T> | InstanceType<TypeOf<T>> | unknown,
-    deps: AbstractType<T>[] | Token[] = []
+    concrete: T | Type<T> | Token<T>,
+    deps: AbstractType<T>[] | Token<T | unknown>[] = []
   ) => {
     this.#relations.set(type, deps.map(this.use));
 

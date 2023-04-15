@@ -1,6 +1,6 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { UiLayoutModule } from '@uncoupled/shared/ui-layout';
-import { MockDataService } from '@uncoupled/shared/util-test';
+import { MockRepository } from '@uncoupled/shared/util-test';
 import { Di } from '@uncoupled/shared/util-core';
 import { TestBed } from '@angular/core/testing';
 import {
@@ -15,12 +15,12 @@ import {
 } from '@uncoupled/library/data-access';
 import { AppComponent } from './app.component';
 
-class UserDataService extends MockDataService<User> {
+class UserRepository extends MockRepository<User> {
   constructor() {
     super([{ id: 1, name: 'Gui' }]);
   }
 }
-class LibraryDataService extends MockDataService<Playlist> {
+class LibraryRepository extends MockRepository<Playlist> {
   constructor() {
     super([
       {
@@ -37,10 +37,10 @@ class LibraryDataService extends MockDataService<Playlist> {
   }
 }
 
-Di.add(UserDataService, UserDataService);
-Di.add(UserFacade, UserFacadeImpl, [UserDataService]);
-Di.add(LibraryDataService, LibraryDataService);
-Di.add(LibraryFacade, LibraryFacadeImpl, [LibraryDataService]);
+Di.add(UserRepository, UserRepository);
+Di.add(UserFacade, UserFacadeImpl, [UserRepository]);
+Di.add(LibraryRepository, LibraryRepository);
+Di.add(LibraryFacade, LibraryFacadeImpl, [LibraryRepository]);
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -84,5 +84,17 @@ describe('AppComponent', () => {
     const playlists = compiled.querySelectorAll('ui-library-list-item');
 
     expect(playlists.length).toEqual(1);
+  });
+
+  it(`should have a user item`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    jest.spyOn(app, 'ngOnInit');
+
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const users = compiled.querySelectorAll('table tbody tr');
+
+    expect(users.length).toEqual(1);
   });
 });

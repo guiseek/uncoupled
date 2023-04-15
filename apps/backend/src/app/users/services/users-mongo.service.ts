@@ -1,10 +1,10 @@
-import { DataService } from '@uncoupled/shared/data-access';
+import { Repository } from '@uncoupled/shared/data-access';
 import { UserEntity } from '../entities/user.entity';
 import { MockService } from '../../shared/mock.service';
 
 export class UsersMongoService
   extends MockService<UserEntity>
-  implements DataService<UserEntity>
+  implements Repository<UserEntity>
 {
   constructor() {
     super([

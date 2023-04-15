@@ -1,1 +1,1 @@
-export * from './lib/mock-data.service';
+export * from './lib/mock.repository';

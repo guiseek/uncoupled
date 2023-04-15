@@ -1,2 +1,3 @@
-export * from './data.service';
+export * from './facade';
 export * from './http';
+export * from './repository';
