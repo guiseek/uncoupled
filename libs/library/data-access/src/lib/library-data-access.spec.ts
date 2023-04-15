@@ -1,7 +1,7 @@
-import { libraryDataAccess } from './library-data-access';
+import {libraryDataAccess} from './library-data-access'
 
 describe('libraryDataAccess', () => {
   it('should work', () => {
-    expect(libraryDataAccess()).toEqual('library-data-access');
-  });
-});
+    expect(libraryDataAccess()).toEqual('library-data-access')
+  })
+})

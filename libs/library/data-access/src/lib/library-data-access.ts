@@ -1,3 +1,3 @@
 export function libraryDataAccess(): string {
-  return 'library-data-access';
+  return 'library-data-access'
 }

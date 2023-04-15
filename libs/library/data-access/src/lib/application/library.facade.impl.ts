@@ -1,14 +1,14 @@
-import { BehaviorSubject, Observable, catchError, take } from 'rxjs';
-import { LibraryRepository } from '../ports/library.repository';
-import { LibraryFacade } from '../ports/library.facade';
-import { Playlist } from '../entities/playlist';
+import {BehaviorSubject, Observable, catchError, take} from 'rxjs'
+import {LibraryRepository} from '../ports/library.repository'
+import {LibraryFacade} from '../ports/library.facade'
+import {Playlist} from '../entities/playlist'
 
 export class LibraryFacadeImpl implements LibraryFacade {
-  #error = new BehaviorSubject<string[]>([]);
-  error$ = this.#error.asObservable();
+  #error = new BehaviorSubject<string[]>([])
+  error$ = this.#error.asObservable()
 
-  #data = new BehaviorSubject<Playlist[]>([]);
-  data$ = this.#data.asObservable();
+  #data = new BehaviorSubject<Playlist[]>([])
+  data$ = this.#data.asObservable()
 
   constructor(private readonly service: LibraryRepository) {}
 
@@ -17,44 +17,44 @@ export class LibraryFacadeImpl implements LibraryFacade {
       .findAll()
       .pipe(take(1), this.catchError())
       .subscribe((users) => {
-        this.#data.next(users);
-      });
+        this.#data.next(users)
+      })
   }
 
   save(value: Playlist) {
     if (value.id) {
       this.service
-        .update(value)
+        .update(value.id, value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
-          this.load();
-        });
+          this.load()
+        })
     } else {
       this.service
         .create(value)
         .pipe(take(1), this.catchError())
         .subscribe(() => {
-          this.load();
-        });
+          this.load()
+        })
     }
   }
 
   remove(value: Playlist) {
     this.service
-      .remove(value)
+      .remove(value.id)
       .pipe(take(1), this.catchError())
       .subscribe(() => {
-        this.load();
-      });
+        this.load()
+      })
   }
 
   catchError = <R>() => {
     return catchError((err, caught: Observable<R>) => {
       if (err) {
-        this.#error.next(err.message);
-        throw err;
+        this.#error.next(err.message)
+        throw err
       }
-      return caught;
-    });
-  };
+      return caught
+    })
+  }
 }

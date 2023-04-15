@@ -1,36 +1,29 @@
-import { LibraryRepository } from '../ports/library.repository';
-import { Http } from '@uncoupled/shared/data-access';
-import { Playlist } from '../entities/playlist';
-import {
-  CreateDto,
-  DeleteDto,
-  FindOneDto,
-  UpdateDto,
-} from 'libs/shared/data-access/src/lib/types';
+import {Http, FindOptions} from '@uncoupled/shared/data-access'
+import {LibraryRepository} from '../ports/library.repository'
+import {Playlist} from '../entities/playlist'
 
 export class LibraryRepositoryImpl implements LibraryRepository {
   constructor(private http: Http<Playlist>) {}
 
   findAll() {
-    return this.http.get<Playlist[]>('libraries');
+    return this.http.get<Playlist[]>('libraries')
   }
-
-  findOne(value: FindOneDto<Playlist>) {
-    return this.http.get<Playlist>(`libraries${value.id}`);
+  findOne(value: FindOptions<Playlist>) {
+    return this.http.post<Playlist, FindOptions<Playlist>>('libraries', value)
   }
-
-  create(value: CreateDto<Playlist>) {
-    return this.http.post<Playlist, CreateDto<Playlist>>('libraries', value);
+  find(value: FindOptions<Playlist>) {
+    return this.http.post<Playlist[], FindOptions<Playlist>>('libraries', value)
   }
-
-  update(value: UpdateDto<Playlist>) {
-    return this.http.put<Playlist, UpdateDto<Playlist>>(
-      `libraries/${value.id}`,
-      value
-    );
+  create(value: Omit<Playlist, 'id'>) {
+    return this.http.post<Playlist, Omit<Playlist, 'id'>>('libraries', value)
   }
-
-  remove(value: DeleteDto<Playlist>) {
-    return this.http.delete<Playlist>(`libraries/${value.id}`);
+  findById(id: number) {
+    return this.http.get<Playlist>(`libraries/${id}`)
+  }
+  update(id: number, value: Partial<Playlist>) {
+    return this.http.put<Playlist, Partial<Playlist>>(`libraries/${id}`, value)
+  }
+  remove(id: number) {
+    return this.http.delete<Playlist>(`libraries/${id}`)
   }
 }
