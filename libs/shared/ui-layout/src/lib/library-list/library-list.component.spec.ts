@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing'
 
-import { LibraryListComponent } from './library-list.component';
+import {LibraryListComponent} from './library-list.component'
 
 describe('LibraryListComponent', () => {
-  let component: LibraryListComponent;
-  let fixture: ComponentFixture<LibraryListComponent>;
+  let component: LibraryListComponent
+  let fixture: ComponentFixture<LibraryListComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LibraryListComponent ]
-    })
-    .compileComponents();
+      declarations: [LibraryListComponent],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(LibraryListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(LibraryListComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

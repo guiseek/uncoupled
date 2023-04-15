@@ -1,1 +1,1 @@
-export * from './chip-list-item.component';
+export * from './chip-list-item.component'

@@ -1,7 +1,7 @@
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, map, merge, of } from 'rxjs';
+import {CollectionViewer, DataSource} from '@angular/cdk/collections'
+import {BehaviorSubject, map, merge, of} from 'rxjs'
 
-type TableSortDirection = 'asc' | 'desc';
+type TableSortDirection = 'asc' | 'desc'
 
 class TableSort<T> {
   constructor(
@@ -14,33 +14,33 @@ class TableSort<T> {
 export class TableDataSource<
   T extends Record<string, string | number>
 > extends DataSource<T> {
-  #data = new BehaviorSubject<T[]>([]);
-  data$ = this.#data.asObservable();
-  sort = new TableSort<T>();
+  #data = new BehaviorSubject<T[]>([])
+  data$ = this.#data.asObservable()
+  sort = new TableSort<T>()
 
   override connect(collectionViewer: CollectionViewer) {
-    const mutations = [collectionViewer.viewChange, this.data$];
+    const mutations = [collectionViewer.viewChange, this.data$]
     return merge(...mutations).pipe(
       map(() => this.#getSortedData(this.#data.value))
-    );
+    )
   }
 
   override disconnect(collectionViewer: CollectionViewer) {
-    console.log(collectionViewer);
+    console.log(collectionViewer)
   }
 
   #getSortedData = (data: T[]) => {
-    const { active, direction } = this.sort;
+    const {active, direction} = this.sort
     if (!active || !direction) {
-      return data;
+      return data
     }
     return data.sort((a, b) => {
-      const isAsc = this.sort.direction === 'asc';
-      return this.#compare(a[active], b[active], isAsc);
-    });
-  };
+      const isAsc = this.sort.direction === 'asc'
+      return this.#compare(a[active], b[active], isAsc)
+    })
+  }
 
   #compare(a: string | number, b: string | number, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1)
   }
 }

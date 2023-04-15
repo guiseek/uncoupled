@@ -1,1 +1,1 @@
-export * from './nav-list-item.component';
+export * from './nav-list-item.component'

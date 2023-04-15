@@ -1,15 +1,11 @@
-import { from } from 'rxjs';
-import { Http } from '../../ports/http';
-import axios from 'axios';
+import {from} from 'rxjs'
+import {Http} from '../../ports/http'
+import axios from 'axios'
 
 export class AxiosHttpImpl<T> extends Http<T> {
-  constructor(override readonly baseUrl: string) {
-    super(baseUrl);
-  }
-
   protected request<R, D = void>(method: string, path: string, data?: T | D) {
-    const url = `${this.baseUrl}/${path}`;
-    const response = axios.request<R>({ method, url, data });
-    return from(response.then((res) => res.data));
+    const url = `${this.baseUrl}/${path}`
+    const response = axios.request<R>({method, url, data})
+    return from(response.then((res) => res.data))
   }
 }

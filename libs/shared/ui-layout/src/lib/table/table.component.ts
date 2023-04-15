@@ -1,5 +1,5 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import {SelectionModel} from '@angular/cdk/collections'
+import {Component} from '@angular/core'
 
 @Component({
   selector: 'ui-table',

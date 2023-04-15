@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core'
 
 @Component({
   selector: 'li[ui-chip-list-item]',
@@ -8,6 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </button>
   `,
   styleUrls: ['./chip-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipListItemComponent {}

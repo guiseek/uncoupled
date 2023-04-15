@@ -1,16 +1,12 @@
-import {
-  CreateDto,
-  DeleteDto,
-  EntityBase,
-  FindOneDto,
-  UpdateDto,
-} from '../types';
-import { Observable } from 'rxjs';
+import {Entity, FindOptions} from '../types'
+import {Observable} from 'rxjs'
 
-export abstract class Repository<T extends EntityBase<T['id']>> {
-  abstract findAll(): Observable<T[]>;
-  abstract findOne<D extends FindOneDto<T>>(value: D): Observable<T>;
-  abstract create<D extends CreateDto<T>>(value: D): Observable<T>;
-  abstract update<D extends UpdateDto<T>>(value: D): Observable<T>;
-  abstract remove<D extends DeleteDto<T>>(value: D): Observable<T>;
+export abstract class Repository<T extends Entity<T['id']>> {
+  abstract findAll(): Observable<T[]>
+  abstract findOne(value: FindOptions<T>): Observable<T>
+  abstract find(value: FindOptions<T>): Observable<T[]>
+  abstract create(value: Omit<T, 'id'>): Observable<T>
+  abstract findById(id: T['id']): Observable<T>
+  abstract update(id: T['id'], value: Partial<T>): Observable<T>
+  abstract remove(id: T['id']): Observable<T>
 }

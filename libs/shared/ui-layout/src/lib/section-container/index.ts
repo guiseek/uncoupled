@@ -1,1 +1,1 @@
-export * from './section-container.component';
+export * from './section-container.component'

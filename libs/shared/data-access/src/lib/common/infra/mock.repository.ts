@@ -1,7 +1,8 @@
-import {Repository, Entity, FindOptions} from '@uncoupled/shared/data-access'
+import {Entity, FindOptions} from '../../types'
+import {Repository} from '../../ports'
 import {of} from 'rxjs'
 
-export abstract class MockRepository<T extends Entity<number>>
+export abstract class MockRepository<T extends Entity<T['id']>>
   implements Repository<T>
 {
   constructor(protected readonly collection: T[] = []) {}
