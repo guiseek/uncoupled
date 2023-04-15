@@ -1,4 +1,4 @@
-import {AxiosHttpImpl, Http, RxJSHttpImpl} from '@uncoupled/shared/data-access'
+import {AxiosHttpImpl, Http} from '@uncoupled/shared/data-access'
 import {Di, Token} from '@uncoupled/shared/util-core'
 import {
   UserFacade,

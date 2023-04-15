@@ -1,6 +1,6 @@
 import {RouterTestingModule} from '@angular/router/testing'
 import {UiLayoutModule} from '@uncoupled/shared/ui-layout'
-import {MockRepository} from '@uncoupled/shared/util-test'
+import {MockRepository} from '@uncoupled/shared/data-access'
 import {Di} from '@uncoupled/shared/util-core'
 import {TestBed} from '@angular/core/testing'
 import {User, UserFacade, UserFacadeImpl} from '@uncoupled/user/data-access'

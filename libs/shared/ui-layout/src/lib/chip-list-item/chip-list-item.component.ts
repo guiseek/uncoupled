@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core'
 
 @Component({
-  selector: 'li[ui-chip-list-item]',
+  selector: 'ui-chip-list-item,li[ui-chip-list-item]',
   template: `
     <button>
       <ng-content></ng-content>

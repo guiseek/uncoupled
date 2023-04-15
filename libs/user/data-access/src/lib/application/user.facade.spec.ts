@@ -1,4 +1,4 @@
-import {MockRepository} from '@uncoupled/shared/util-test'
+import {MockRepository} from '@uncoupled/shared/data-access'
 import {Di, Token} from '@uncoupled/shared/util-core'
 import {UserRepository} from '../ports/user.repository'
 import {UserFacadeImpl} from './user.facade.impl'

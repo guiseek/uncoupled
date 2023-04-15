@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
 
 @Component({
-  selector: 'uncoupled-user-feature-shell',
+  selector: 'user-feature-shell',
   templateUrl: './user-feature-shell.component.html',
   styleUrls: ['./user-feature-shell.component.scss'],
 })

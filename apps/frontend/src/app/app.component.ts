@@ -5,7 +5,7 @@ import {Di} from '@uncoupled/shared/util-core'
 import {UserForm} from './users/user.form'
 
 @Component({
-  selector: 'workspace-root',
+  selector: 'uncoupled-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
