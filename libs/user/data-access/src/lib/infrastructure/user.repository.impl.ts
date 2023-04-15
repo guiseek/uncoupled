@@ -1,33 +1,29 @@
-import { UserRepository } from '../ports/user.repository';
-import { Http } from '@uncoupled/shared/data-access';
-import { User } from '../entities/user';
-import {
-  CreateDto,
-  DeleteDto,
-  FindOneDto,
-  UpdateDto,
-} from 'libs/shared/data-access/src/lib/types';
+import {Http, FindOptions} from '@uncoupled/shared/data-access'
+import {UserRepository} from '../ports/user.repository'
+import {User} from '../entities/user'
 
 export class UserRepositoryImpl implements UserRepository {
   constructor(private http: Http<User>) {}
 
   findAll() {
-    return this.http.get<User[]>('users');
+    return this.http.get<User[]>('libraries')
   }
-
-  findOne(value: FindOneDto<User>) {
-    return this.http.get<User>(`users/${value.id}`);
+  findOne(value: FindOptions<User>) {
+    return this.http.post<User, FindOptions<User>>('libraries', value)
   }
-
-  create(value: CreateDto<User>) {
-    return this.http.post<User, CreateDto<User>>('users', value);
+  find(value: FindOptions<User>) {
+    return this.http.post<User[], FindOptions<User>>('libraries', value)
   }
-
-  update(value: UpdateDto<User>) {
-    return this.http.put<User, UpdateDto<User>>(`users/${value.id}`, value);
+  create(value: Omit<User, 'id'>) {
+    return this.http.post<User, Omit<User, 'id'>>('libraries', value)
   }
-
-  remove(value: DeleteDto<User>) {
-    return this.http.delete<User>(`users/${value.id}`);
+  findById(id: number) {
+    return this.http.get<User>(`libraries/${id}`)
+  }
+  update(id: number, value: Partial<User>) {
+    return this.http.put<User, Partial<User>>(`libraries/${id}`, value)
+  }
+  remove(id: number) {
+    return this.http.delete<User>(`libraries/${id}`)
   }
 }

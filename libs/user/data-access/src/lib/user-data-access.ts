@@ -1,3 +1,3 @@
 export function userDataAccess(): string {
-  return 'user-data-access';
+  return 'user-data-access'
 }

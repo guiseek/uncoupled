@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserFeatureShellComponent } from './user-feature-shell.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing'
+import {UserFeatureShellComponent} from './user-feature-shell.component'
 
 describe('UserFeatureShellComponent', () => {
-  let component: UserFeatureShellComponent;
-  let fixture: ComponentFixture<UserFeatureShellComponent>;
+  let component: UserFeatureShellComponent
+  let fixture: ComponentFixture<UserFeatureShellComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [UserFeatureShellComponent],
-    }).compileComponents();
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(UserFeatureShellComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(UserFeatureShellComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
