@@ -7,7 +7,9 @@ import {User} from '../entities/user'
 
 const USERS_TOKEN = new Token<User[]>('users.token')
 
-Di.add(USERS_TOKEN, [{id: 1, name: 'Gui', email: 'gui@seek.dev', username: 'guiseek'}])
+const USER_MOCK = {id: 1, name: 'Gui', email: 'gui@seek.dev', username: 'guiseek'}
+
+Di.add(USERS_TOKEN, [USER_MOCK])
 Di.add(UserRepository, MockRepository, [USERS_TOKEN])
 Di.add(UserFacade, UserFacadeImpl, [UserRepository])
 
@@ -23,14 +25,15 @@ describe('UserFacadeImpl', () => {
   it('should users to be greater than or equal 2', () => {
     jest.spyOn(repository, 'findAll')
 
-    facade.save({name: 'João'})
+    facade.create({name: 'João', email: 'john@seek.dev', username: 'johnseek'})
     expect(repository['collection'].length).toBe(2)
   })
 
   it('should users to be greater than or equal 2', () => {
     jest.spyOn(repository, 'findAll')
 
-    facade.remove({id: 2})
+    const user = repository['collection'][1]
+    facade.remove(user)
     expect(repository['collection'].length).toBe(1)
   })
 
@@ -38,7 +41,7 @@ describe('UserFacadeImpl', () => {
     jest.spyOn(repository, 'update')
 
     const seek = {id: 1, name: 'Seek'}
-    facade.save(seek)
+    facade.update(seek)
 
     expect(repository.update).toBeCalledWith(seek.id, seek)
   })

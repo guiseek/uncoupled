@@ -7,12 +7,12 @@ import {
   UserRepositoryImpl,
 } from '@uncoupled/user/data-access'
 import {
-  LibraryFacade,
-  LibraryFacadeImpl,
-  LibraryRepository,
-  LibraryRepositoryImpl,
+  PlaylistFacade,
+  PlaylistFacadeImpl,
+  PlaylistRepository,
+  PlaylistRepositoryImpl,
   Playlist,
-} from '@uncoupled/library/data-access'
+} from '@uncoupled/collection/data-access'
 
 const API_URL = new Token('api.url')
 
@@ -32,16 +32,16 @@ Di.add(LIBRARY_MOCK, [
 ])
 
 Di.add(Http, AxiosHttpImpl, [API_URL])
-Di.add(UserRepository, UserRepositoryImpl, [Http]);
+Di.add(UserRepository, UserRepositoryImpl, [Http])
 Di.add(UserFacade, UserFacadeImpl, [UserRepository])
 
-Di.add(LibraryRepository, LibraryRepositoryImpl, [Http]);
-Di.add(LibraryFacade, LibraryFacadeImpl, [LibraryRepository])
+Di.add(PlaylistRepository, PlaylistRepositoryImpl, [Http])
+Di.add(PlaylistFacade, PlaylistFacadeImpl, [PlaylistRepository])
 
 setTimeout(() => {
   console.log(Di.use(Http))
   console.log(Di.use(UserRepository))
   console.log(Di.use(UserFacade))
-  console.log(Di.use(LibraryRepository))
-  console.log(Di.use(LibraryFacade))
+  console.log(Di.use(PlaylistRepository))
+  console.log(Di.use(PlaylistFacade))
 }, 1000)

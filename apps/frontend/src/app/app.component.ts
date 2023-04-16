@@ -1,5 +1,5 @@
 import {UserFacade} from '@uncoupled/user/data-access'
-import {LibraryFacade} from '@uncoupled/library/data-access'
+import {PlaylistFacade} from '@uncoupled/collection/data-access'
 import {Component, OnInit} from '@angular/core'
 import {Di} from '@uncoupled/shared/util-core'
 import {UserForm} from './users/user.form'
@@ -14,15 +14,15 @@ export class AppComponent implements OnInit {
 
   readonly form = new UserForm()
   readonly userFacade = Di.use(UserFacade)
-  readonly libraryFacade = Di.use(LibraryFacade)
+  readonly playlistFacade = Di.use(PlaylistFacade)
 
   onSubmit() {
-    this.userFacade.save(this.form.value)
+    // this.userFacade.save(this.form.value)
     this.form.reset()
   }
 
   ngOnInit(): void {
-    this.libraryFacade.load()
+    this.playlistFacade.load()
     this.userFacade.load()
   }
 }

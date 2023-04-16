@@ -15,11 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@uncoupled/library/data-access": [
-        "libs/library/data-access/src/index.ts"
+      "@uncoupled/collection/data-access": [
+        "libs/collection/data-access/src/index.ts"
       ],
       "@uncoupled/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@uncoupled/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
+      "@uncoupled/shared/ui-material": ["libs/shared/ui-material/src/index.ts"],
       "@uncoupled/shared/util-core": ["libs/shared/util-core/src/index.ts"],
       "@uncoupled/user/data-access": ["libs/user/data-access/src/index.ts"],
       "@uncoupled/user/feature-shell": ["libs/user/feature-shell/src/index.ts"]

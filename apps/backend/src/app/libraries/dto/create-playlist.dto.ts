@@ -1,6 +1,6 @@
 import {IsNotEmpty} from 'class-validator'
 import {PlaylistEntity} from '../entities/playlist.entity'
-import {PlaylistKind} from '@uncoupled/library/data-access'
+import {PlaylistKind} from '@uncoupled/collection/data-access'
 
 export class CreatePlaylistDto extends PlaylistEntity {
   @IsNotEmpty({

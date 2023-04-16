@@ -1,21 +1,21 @@
 {
-  "name": "library-data-access",
+  "name": "collection-data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/library/data-access/src",
+  "sourceRoot": "libs/collection/data-access/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/library/data-access/**/*.ts"]
+        "lintFilePatterns": ["libs/collection/data-access/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/library/data-access/jest.config.ts",
+        "jestConfig": "libs/collection/data-access/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

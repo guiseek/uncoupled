@@ -6,9 +6,9 @@ import {TestBed} from '@angular/core/testing'
 import {User, UserFacade, UserFacadeImpl} from '@uncoupled/user/data-access'
 import {
   Playlist,
-  LibraryFacade,
-  LibraryFacadeImpl,
-} from '@uncoupled/library/data-access'
+  PlaylistFacade,
+  PlaylistFacadeImpl,
+} from '@uncoupled/collection/data-access'
 import {AppComponent} from './app.component'
 
 class UserRepository extends MockRepository<User> {
@@ -36,7 +36,7 @@ class LibraryRepository extends MockRepository<Playlist> {
 Di.add(UserRepository, UserRepository)
 Di.add(UserFacade, UserFacadeImpl, [UserRepository])
 Di.add(LibraryRepository, LibraryRepository)
-Di.add(LibraryFacade, LibraryFacadeImpl, [LibraryRepository])
+Di.add(PlaylistFacade, PlaylistFacadeImpl, [LibraryRepository])
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -58,10 +58,10 @@ describe('AppComponent', () => {
     expect(app.userFacade).toBeInstanceOf(UserFacadeImpl)
   })
 
-  it(`should have LibraryFacade instance'`, () => {
+  it(`should have PlaylistFacade instance'`, () => {
     const fixture = TestBed.createComponent(AppComponent)
     const app = fixture.componentInstance
-    expect(app.libraryFacade).toBeInstanceOf(LibraryFacadeImpl)
+    expect(app.playlistFacade).toBeInstanceOf(PlaylistFacadeImpl)
   })
 
   it(`should have as title 'frontend'`, () => {
